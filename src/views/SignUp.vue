@@ -24,7 +24,7 @@
       <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="Last name" v-model="lastName"/>
       </fieldset>
-      <button :disabled="isSubmitting">
+      <button :disabled="isRegisterSubmitting">
         Sign Up
       </button>
     </form>
@@ -44,8 +44,8 @@ export default {
     }
   },
   computed: {
-    isSubmitting() {
-      return this.$store.state.auth.isSubmitting
+    isRegisterSubmitting() {
+      return this.$store.state.auth.isRegisterSubmitting
     }
   },
   methods: {
