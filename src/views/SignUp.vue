@@ -4,6 +4,7 @@
     <p>
       <router-link :to="{ name: 'signin' }">Already registered?</router-link>
     </p>
+    <validation-errors v-if="validationErrors" :validationErrors="validationErrors"/>
     <form @submit.prevent="onSubmit">
       <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="Username" v-model="username"/>
@@ -32,8 +33,13 @@
 </template>
 
 <script>
+import ValidationErrors from '../components/ValidationErrors.vue';
+
 export default {
   name: 'SignUp',
+  components: {
+    ValidationErrors
+  },
   data() {
     return {
       username: '',
@@ -46,6 +52,9 @@ export default {
   computed: {
     isRegisterSubmitting() {
       return this.$store.state.auth.isRegisterSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
     }
   },
   methods: {

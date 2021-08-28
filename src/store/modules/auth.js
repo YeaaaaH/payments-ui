@@ -44,7 +44,7 @@ const actions = {
           resolve(response.data)
         })
         .catch(result => {
-          context.commit('registerFailure', result.response.data.errors)
+          context.commit('registerFailure', result.response.data.exceptions)
         })
     })
   },
