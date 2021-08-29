@@ -58,9 +58,8 @@ const actions = {
           window.localStorage.setItem('access_token', response.data.access_token)
           resolve(response.data)
         })
-        .catch(() => {
-          context.commit('loginFailure')
-          console.log('FAILED!')
+        .catch(result => {
+          context.commit('loginFailure', result.response.data.exceptions)
         })
     })
   }
