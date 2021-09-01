@@ -4,6 +4,10 @@ const register = credentials => {
   return axios.post('/auth/signup', credentials)
 }
 
+const getUser = () => {
+  return axios.get('/user')
+}
+
 const login = (credentials) => {
   return axios({
     method: 'POST',
@@ -27,5 +31,6 @@ const config = {
 
 export default {
   register,
-  login
+  login,
+  getUser
 }

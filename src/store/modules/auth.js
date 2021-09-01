@@ -3,7 +3,8 @@ import auth from "../../services/auth";
 const state = {
   isRegisterSubmitting: false,
   isLoginSubmitting: false,
-  currentUser: null,
+  isUserLoading: false,
+  user: null,
   validationErrors: null,
   isLoggedIn: null
 }
@@ -30,7 +31,20 @@ const mutations = {
   loginFailure(state, payload) {
     state.isLoginSubmitting = false
     state.validationErrors = payload
-  }
+  },
+  getUserStart(state) {
+    state.isUserLoading = true
+  },
+  getUserSuccess(state, payload) {
+    state.isUserLoading = false,
+    state.user = payload,
+    state.isLoggedIn = true
+  },
+  getUserFailure(state) {
+    state.isUserLoading = false
+    state.isLoggedIn = false,
+    state.user = null
+  },
 }
 
 const actions = {
@@ -60,6 +74,20 @@ const actions = {
         })
         .catch(result => {
           context.commit('loginFailure', result.response.data.exceptions)
+        })
+    })
+  },
+  getUser(context) {
+    return new Promise(resolve => {
+      context.commit('getUserStart')
+      auth
+        .getUser()
+        .then(response => {
+          context.commit('getUserSuccess', response.data.user)
+          resolve(response.data.user)
+        })
+        .catch(() => {
+          context.commit('getUserFailure')
         })
     })
   }
