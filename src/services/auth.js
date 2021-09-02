@@ -5,7 +5,7 @@ const register = credentials => {
 }
 
 const getUser = () => {
-  return axios.get('/user')
+  return axios.get('v1/user')
 }
 
 const login = (credentials) => {

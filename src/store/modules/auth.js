@@ -6,7 +6,7 @@ const state = {
   isUserLoading: false,
   user: null,
   validationErrors: null,
-  isLoggedIn: null
+  isLoggedIn: false
 }
 
 const mutations = {
@@ -27,9 +27,11 @@ const mutations = {
   },
   loginSuccess(state) {
     state.isLoginSubmitting = false
+    state.isLoggedIn = true
   },
   loginFailure(state, payload) {
     state.isLoginSubmitting = false
+    state.isLoggedIn = false
     state.validationErrors = payload
   },
   getUserStart(state) {
@@ -87,6 +89,7 @@ const actions = {
           resolve(response.data.user)
         })
         .catch(() => {
+          window.localStorage.removeItem('access_token')
           context.commit('getUserFailure')
         })
     })

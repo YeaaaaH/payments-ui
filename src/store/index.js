@@ -1,5 +1,6 @@
 import {createStore} from "vuex";
 import auth from "./modules/auth";
+import categories from "./modules/categories";
 
 
 export default createStore({
@@ -7,6 +8,7 @@ export default createStore({
     mutations: {},
     actions: {},
     modules: {
-        auth
+        auth,
+        categories
     }
 });

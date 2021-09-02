@@ -21,6 +21,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getUser");
+    this.$store.dispatch("getCategories");
   }
 };
 </script>
