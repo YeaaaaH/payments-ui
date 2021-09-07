@@ -75,7 +75,11 @@ const actions = {
           resolve(response.data)
         })
         .catch(result => {
-          context.commit('loginFailure', result.response.data.exceptions)
+          if (result.response) {
+            context.commit('loginFailure', result.response.data.exceptions)
+          } else {
+            context.commit('loginFailure', [{'message': 'Server request is denied'}])
+          }
         })
     })
   },
@@ -90,6 +94,7 @@ const actions = {
         })
         .catch(() => {
           window.localStorage.removeItem('access_token')
+          console.log('remove TOKEN')
           context.commit('getUserFailure')
         })
     })

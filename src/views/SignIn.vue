@@ -1,9 +1,11 @@
 <template>
-  <div class="auth-container">
-    <h1>Sign In</h1>
+  <div class="auth-container container col-4" >
+    <div class="text-center">
+    <h3>Sign In</h3>
     <p>
       <router-link :to="{ name: 'signup' }">Not registered yet?</router-link>
     </p>
+    </div>
     <validation-errors v-if="validationErrors" :validationErrors="validationErrors"/>
     <form @submit.prevent="onSubmit">
       <fieldset class="form-group">
@@ -13,9 +15,11 @@
       <fieldset class="form-group">
         <input type="password" class="form-control" placeholder="Password" v-model="password"/>
       </fieldset>
-      <button :disabled="isLoginSubmitting">
-        Sign In
-      </button>
+      <div class="text-center">
+        <button :disabled="isLoginSubmitting" class="btn btn-primary" style="margin-top: 5px;">
+          Sign In
+        </button>
+      </div>
     </form>
   </div>
 </template>

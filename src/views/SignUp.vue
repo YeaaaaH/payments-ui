@@ -1,34 +1,49 @@
 <template>
-  <div class="auth-container">
-    <h1>Sign Up</h1>
-    <p>
-      <router-link :to="{ name: 'signin' }">Already registered?</router-link>
-    </p>
-    <validation-errors v-if="validationErrors" :validationErrors="validationErrors"/>
-    <form @submit.prevent="onSubmit">
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Username" v-model="username"/>
-      </fieldset>
+  <div class="auth-container container">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <div class="text-center">
+          <h3>Sign Up</h3>
+          <p>
+            <router-link :to="{ name: 'signin' }">Already registered?</router-link>
+          </p>
+        </div>
+        <validation-errors v-if="validationErrors" :validationErrors="validationErrors"/>
+        <form @submit.prevent="onSubmit">
 
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Email" v-model="email"/>
-      </fieldset>
+          <div class="form-group">
+            <label>User name</label>
+            <input type="text" class="form-control" placeholder="Username" v-model="username"/>
+          </div>
 
-      <fieldset class="form-group">
-        <input type="password" class="form-control" placeholder="Password" v-model="password"/>
-      </fieldset>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="text" class="form-control" placeholder="Email" v-model="email"/>
+          </div>
 
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="First name" v-model="firstName"/>
-      </fieldset>
+          <div class="form-group">
+            <label>Password</label>
+            <i class="fa fa-lock"></i>
+            <input type="password" class="form-control" placeholder="Password" v-model="password"/>
+          </div>
 
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Last name" v-model="lastName"/>
-      </fieldset>
-      <button :disabled="isRegisterSubmitting">
-        Sign Up
-      </button>
-    </form>
+          <div class="form-group">
+            <label>First name</label>
+            <input type="text" class="form-control" placeholder="First name" v-model="firstName"/>
+          </div>
+
+          <div class="form-group">
+            <label>Last name</label>
+            <input type="text" class="form-control" placeholder="Last name" v-model="lastName"/>
+          </div>
+          <div class="text-center">
+          <button :disabled="isRegisterSubmitting" class="btn btn-primary" style="margin-top: 5px;">
+            Sign Up
+          </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,9 +89,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.auth-container {
-  text-align: center;
-}
-</style>

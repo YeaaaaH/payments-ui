@@ -1,8 +1,14 @@
 <template>
   <topbar/>
-  <chart/>
-  <payment/>
-  <transactions/>
+  <div class="container-fluid">
+    <div class="row">
+      <chart/>
+      <payment/>
+    </div>
+  </div>
+  <div class="container">
+    <transactions/>
+  </div>
 </template>
 
 <script>

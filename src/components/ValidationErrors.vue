@@ -1,9 +1,7 @@
 <template>
-  <ul class="errors">
-    <li v-for="errorMessage in errorMessages" :key="errorMessage">
-      {{ errorMessage.message }}
-    </li>
-  </ul>
+  <p v-for="errorMessage in errorMessages" :key="errorMessage" class="alert-danger">
+    {{ errorMessage.message }}
+  </p>
 </template>
 
 <script>
@@ -17,9 +15,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.errors {
-  text-align: left;
-}
-</style>

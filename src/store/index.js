@@ -1,6 +1,7 @@
 import {createStore} from "vuex";
 import auth from "./modules/auth";
 import categories from "./modules/categories";
+import payments from "./modules/payments";
 
 
 export default createStore({
@@ -9,6 +10,7 @@ export default createStore({
     actions: {},
     modules: {
         auth,
-        categories
+        categories,
+        payments
     }
 });

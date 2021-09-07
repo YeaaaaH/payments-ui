@@ -1,5 +1,7 @@
 <template>
-  <div>CHART</div>
+    <div class="col-8">
+    CHART
+    </div>
 </template>
 
 <script>

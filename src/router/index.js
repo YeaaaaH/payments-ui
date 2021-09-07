@@ -3,6 +3,7 @@ import SignUp from "../views/SignUp";
 import SignIn from "../views/SignIn";
 import Dashboard from "../views/Dashboard";
 import store from "../store";
+
 const routes = [
   {
     path: '/',
