@@ -1,6 +1,7 @@
 <template>
     <div class="col-4">
     <p>Add payment</p>
+    <validation-errors v-if="savePaymentErrors" :validationErrors="savePaymentErrors"/>
     <form @submit.prevent="onSubmit">
       <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="Title" v-model="title"/>
@@ -10,10 +11,13 @@
         <input type="text" class="form-control" placeholder="Amount" v-model="amount"/>
       </fieldset>
 
-      <fieldset class="form-group">
-        <input type="text" class="form-control" placeholder="Category" v-model="category"/>
-      </fieldset>
-
+      <select class="form-select" v-model="categoryId">
+        <option value="" disabled>Choose a category</option>
+        <option v-for="category in categories" :key="category" v-bind:value="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      
       <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="Description" v-model="description"/>
       </fieldset>
@@ -27,22 +31,32 @@
 </template>
 
 <script>
+
+import ValidationErrors from '../components/ValidationErrors.vue';
+
 export default {
   name: "Payment",
-    data() {
+  components: {
+    ValidationErrors
+  },
+  props: {
+    categories: Object
+  },
+  data() {
     return {
       title: '',
       amount: '',
-      category: '',
-      description: ''
+      categoryId: '',
+      description: '',
+      createdOn: new Date()
     }
   },
   computed: {
     isPaymentSubmitting() {
       return this.$store.state.payments.isPaymentSubmitting
     },
-    validationErrors() {
-      return this.$store.state.payments.validationErrors
+    savePaymentErrors() {
+      return this.$store.state.payments.savePaymentErrors
     },
     userId() {
       return this.$store.state.auth.user.userId
@@ -53,9 +67,10 @@ export default {
       this.$store.dispatch('savePayment', {
         title: this.title,
         amount: this.amount,
-        category: this.category,
+        categoryId: this.categoryId,
         description: this.description,
-        userId: this.userId
+        userId: this.userId,
+        createdOn: this.createdOn
       })
     }
   }

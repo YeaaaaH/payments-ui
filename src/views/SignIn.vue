@@ -8,13 +8,20 @@
     </div>
     <validation-errors v-if="validationErrors" :validationErrors="validationErrors"/>
     <form @submit.prevent="onSubmit">
-      <fieldset class="form-group">
+      <div class="input-group form-group">
+        <div class="input-group-prepend">
+        <span class="input-group-text"><i class="bi bi-person-circle"/></span>
+        </div>
         <input type="text" class="form-control" placeholder="Username" v-model="username"/>
-      </fieldset>
+      </div>
 
-      <fieldset class="form-group">
+      <div class="input-group form-group">
+        <div class="input-group-prepend">
+        <span class="input-group-text"><i class="bi bi-lock-fill"/></span>
+        </div>
         <input type="password" class="form-control" placeholder="Password" v-model="password"/>
-      </fieldset>
+      </div>
+
       <div class="text-center">
         <button :disabled="isLoginSubmitting" class="btn btn-primary" style="margin-top: 5px;">
           Sign In
@@ -60,3 +67,11 @@ export default {
   }
 };
 </script>
+
+<style>
+  .input-group-text {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+  }
+</style>

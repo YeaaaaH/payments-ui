@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-6 mx-auto">
         <div class="text-center">
-          <h3>Sign Up</h3>
+          <h3>Create Account</h3>
           <p>
             <router-link :to="{ name: 'signin' }">Already registered?</router-link>
           </p>
@@ -11,33 +11,43 @@
         <validation-errors v-if="validationErrors" :validationErrors="validationErrors"/>
         <form @submit.prevent="onSubmit">
 
-          <div class="form-group">
-            <label>User name</label>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-person-circle"/></span>
+            </div>
             <input type="text" class="form-control" placeholder="Username" v-model="username"/>
           </div>
 
-          <div class="form-group">
-            <label>Email address</label>
-            <input type="text" class="form-control" placeholder="Email" v-model="email"/>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-envelope-fill"/></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Email(some@domain.com)" v-model="email"/>
           </div>
 
-          <div class="form-group">
-            <label>Password</label>
-            <i class="fa fa-lock"></i>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-lock-fill"/></span>
+            </div>
             <input type="password" class="form-control" placeholder="Password" v-model="password"/>
           </div>
 
-          <div class="form-group">
-            <label>First name</label>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-ui-checks"/></span>
+            </div>
             <input type="text" class="form-control" placeholder="First name" v-model="firstName"/>
           </div>
 
-          <div class="form-group">
-            <label>Last name</label>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-ui-checks"/></span>
+            </div>
             <input type="text" class="form-control" placeholder="Last name" v-model="lastName"/>
           </div>
+
           <div class="text-center">
-          <button :disabled="isRegisterSubmitting" class="btn btn-primary" style="margin-top: 5px;">
+          <button :disabled="isRegisterSubmitting" class="btn btn-success w-100" style="margin-top: 5px;">
             Sign Up
           </button>
           </div>

@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       <chart/>
-      <payment/>
+      <payment :categories="categories"/>
     </div>
   </div>
   <div class="container">
@@ -28,6 +28,11 @@ export default {
   mounted() {
     this.$store.dispatch("getUser");
     this.$store.dispatch("getCategories");
-  }
+  },
+  computed: {
+    categories() {
+      return this.$store.state.categories.categories
+    }
+  },
 };
 </script>

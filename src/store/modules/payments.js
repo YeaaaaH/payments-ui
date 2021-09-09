@@ -3,7 +3,8 @@ import payments from "../../services/payments";
 const state = {
   isPaymentsLoading: false,
   isPaymentSaving: false,
-  payments: null
+  payments: null,
+  savePaymentErrors: null,
 }
 
 const mutations = {
@@ -20,12 +21,14 @@ const mutations = {
   },
   savingPaymentStart(state) {
     state.isPaymentSaving = true
+    state.savePaymentErrors = null
   },
   savingPaymentSuccess(state) {
     state.isPaymentSaving = false
   },
-  savingPaymentFailure(state) {
+  savingPaymentFailure(state, payload) {
     state.isPaymentSaving = false
+    state.savePaymentErrors = payload
   },
 }
 
@@ -46,15 +49,16 @@ const actions = {
   },
   savePayment(context, payload) {
     return new Promise(resolve => {
-      context.commit('getPaymentsStart')
+      context.commit('savingPaymentStart')
       payments
         .savePayment(payload)
         .then(response => {
-          context.commit('getPaymentsSuccess')
+          context.commit('savingPaymentSuccess')
           resolve(response.data)
         })
-        .catch(() => {
-          context.commit('getPaymentsFailure')
+        .catch(result => {
+          console.log(result.response.data.exceptions)
+          context.commit('savingPaymentFailure', result.response.data.exceptions)
         })
     })
   }

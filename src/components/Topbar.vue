@@ -1,22 +1,27 @@
 <template>
-  <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-3">
-          <a class="navbar-brand" href="#">Logo</a>
+        <div class="col-4">
+          <div class="">Logo</div>
         </div>
         <div class="col-4">
-          <a class="navbar-brand" href="#">Dashboard</a>
+          <div class="row">
+          <div class="col-4" href="#">Dashboard</div>
+          <div class="col-8" href="#">Reports</div>
+          </div>
         </div>
         <div class="col-4">
-          <a class="navbar-brand" href="#">Settings</a>
+          <div class="row">
+          <div class="col-8 d-flex justify-content-end" href="#">Settings</div>
+          <div class="d-flex justify-content-center col-4" href="#">{{ currentUser.username }}</div>
+          </div>
         </div>
       </div>
     </div>
-  </nav>
 </template>
 
 <script>
+
 export default {
   name: "Topbar",
   computed: {
@@ -27,11 +32,3 @@ export default {
   }
 };
 </script>
-<style>
-li {
-  display: inline-block;
-}
-ul {
-  display: inline-block;
-}
-</style>

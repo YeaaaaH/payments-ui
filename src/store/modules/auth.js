@@ -94,7 +94,6 @@ const actions = {
         })
         .catch(() => {
           window.localStorage.removeItem('access_token')
-          console.log('remove TOKEN')
           context.commit('getUserFailure')
         })
     })
