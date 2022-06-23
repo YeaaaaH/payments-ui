@@ -1,5 +1,5 @@
 <template>
-    <div class="col-4">
+  <div class="col-4">
     <p>Add payment</p>
     <validation-errors v-if="savePaymentErrors" :validationErrors="savePaymentErrors"/>
     <form @submit.prevent="onSubmit">
@@ -17,12 +17,12 @@
           {{ category.name }}
         </option>
       </select>
-      
+
       <fieldset class="form-group">
         <input type="text" class="form-control" placeholder="Description" v-model="description"/>
       </fieldset>
       <div class="text-left">
-        <button :disabled="isLoginSubmitting" class="btn btn-success" style="margin-top: 5px;">
+        <button :disabled="isPaymentSubmitting" class="btn btn-success w-100" style="margin-top: 5px;">
           Create
         </button>
       </div>
@@ -47,8 +47,7 @@ export default {
       title: '',
       amount: '',
       categoryId: '',
-      description: '',
-      createdOn: new Date()
+      description: ''
     }
   },
   computed: {
@@ -70,8 +69,12 @@ export default {
         categoryId: this.categoryId,
         description: this.description,
         userId: this.userId,
-        createdOn: this.createdOn
+        createdOn: new Date()
       })
+      this.title = ''
+      this.amount = ''
+      this.categoryId = ''
+      this.description = ''
     }
   }
 }

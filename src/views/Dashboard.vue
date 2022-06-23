@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="container">
-    <transactions/>
+    <transactions :userId="userId"/>
   </div>
 </template>
 
@@ -25,13 +25,16 @@ export default {
     Payment,
     Transactions
   },
-  mounted() {
+  async created() {
     this.$store.dispatch("getUser");
     this.$store.dispatch("getCategories");
   },
   computed: {
     categories() {
       return this.$store.state.categories.categories
+    },
+    userId() {
+      return this.$store.state.auth.user.userId
     }
   },
 };

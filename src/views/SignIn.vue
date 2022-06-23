@@ -72,6 +72,5 @@ export default {
   .input-group-text {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-
   }
 </style>
