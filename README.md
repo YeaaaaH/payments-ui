@@ -4,7 +4,7 @@ UI for pet application. daily/monthly spends calculation and reports generation
 
 Prerequisites:
 
-    node-js(npm)
+    node-js(npm) v.16
     npm install (in project root folder)
     npm install --save vue-axios (in project root folder)
 To run locally:
